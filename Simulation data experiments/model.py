@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-"""NeRF2 NN model
-"""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
