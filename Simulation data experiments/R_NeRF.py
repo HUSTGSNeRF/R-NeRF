@@ -50,7 +50,7 @@ class NeRF2_Runner():
         self.writer = SummaryWriter(os.path.join(self.logdir, self.expname, 'tensorboard'))
 
         ## Networks
-        self.nerf2_network = NeRF2(**kwargs_network).to(self.devices)
+        self.nerf2_network = RNeRF(**kwargs_network).to(self.devices)
         params = list(self.nerf2_network.parameters())
         self.optimizer = torch.optim.Adam(params, lr=float(kwargs_train['lr']),
                                           weight_decay=float(kwargs_train['weight_decay']),
