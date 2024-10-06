@@ -1,0 +1,19 @@
+2024-04-19 15:12:53,479 - nerf2 - INFO - expname:ble-rssi-exp1, datadir:data/BLE/, logdir:logs/BLE/
+2024-04-19 15:12:54,037 - nerf2 - INFO - Total number of parameters: 1266504
+2024-04-19 15:12:54,038 - nerf2 - INFO - Found ckpts []
+2024-04-19 15:12:54,038 - nerf2 - INFO - Loading training set...
+2024-04-19 15:12:54,517 - nerf2 - INFO - Loading test set...
+2024-04-19 15:12:54,690 - nerf2 - INFO - Train set size:6764, Test set size:1562
+2024-04-19 15:12:54,690 - nerf2 - INFO - Start training. Current Iteration:1
+2024-04-19 15:14:05,473 - nerf2 - INFO - expname:ble-rssi-exp1, datadir:data/BLE/, logdir:logs/BLE/
+2024-04-19 15:14:06,044 - nerf2 - INFO - Total number of parameters: 1266504
+2024-04-19 15:14:06,044 - nerf2 - INFO - Found ckpts ['logs/BLE/ble-rssi-exp1/ckpts/000300.tar', 'logs/BLE/ble-rssi-exp1/ckpts/000400.tar', 'logs/BLE/ble-rssi-exp1/ckpts/000500.tar']
+2024-04-19 15:14:06,044 - nerf2 - INFO - Loading ckpt logs/BLE/ble-rssi-exp1/ckpts/000500.tar
+2024-04-19 15:14:06,087 - nerf2 - INFO - Loading training set...
+2024-04-19 15:14:06,698 - nerf2 - INFO - Loading test set...
+2024-04-19 15:14:06,904 - nerf2 - INFO - Train set size:6764, Test set size:1562
+2024-04-19 15:14:06,905 - nerf2 - INFO - Start evaluation
+2024-04-19 15:14:08,024 - nerf2 - INFO - Total Median error:3.61
+2024-04-19 15:14:08,025 - nerf2 - INFO - Total MAE error:3.77
+2024-04-19 15:14:08,025 - nerf2 - INFO - Total MSE error:19.01
+2024-04-19 15:14:08,025 - nerf2 - INFO - Total RMSE error:4.36
