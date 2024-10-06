@@ -9,4 +9,4 @@ The relevant package and configuration information can be found in **conda_env.y
 ## training the model<br>
 python R_NeRF.py --mode train --config configs/config.yml --dataset_type ble --gpu 0 <br>
 ## Inference the model<br>
-python R_NeRF.py --mode test --config configs/configs.yml --dataset_type ble --gpu 0<br>
+python R_NeRF.py --mode test --config configs/config.yml --dataset_type ble --gpu 0<br>
