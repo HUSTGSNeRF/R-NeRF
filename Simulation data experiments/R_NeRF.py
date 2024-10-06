@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-"""NeRF2 runner for training and testing
-"""
-
 import os
 
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
