@@ -15,9 +15,6 @@ csi2snr = lambda x, y: -10 * torch.log10(
     torch.norm(y, dim=(1, 2)) ** 2
 )
 
-
-
-
 class Embedder():
     """positional encoding
     """
