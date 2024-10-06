@@ -5,8 +5,7 @@ Thank you for your interest in our work. This repository mainly maintains the co
 This file contains the measured data set, which is mainly used for experiments<br>
 **Simulation data experiment** <br>
 This file contains the simulation data set, and the simulation data is mainly experimented<br>
-**nerfxiaorong** <br>
-Contains code for partial ablation experiments
+
 ## training the model<br>
 python nerf2_runner.py --mode train --config configs/ble-rssi.yml --dataset_type ble --gpu 0 <br>
 ## Inference the model<br>
