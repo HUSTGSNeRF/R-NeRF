@@ -7,6 +7,6 @@ This file contains the measured data set, which is mainly used for experiments<b
 This file contains the simulation data set, and the simulation data is mainly experimented<br>
 
 ## training the model<br>
-python R_NeRF.py --mode train --config configs/ble-rssi.yml --dataset_type ble --gpu 0 <br>
+python R_NeRF.py --mode train --config configs/config.yml --dataset_type ble --gpu 0 <br>
 ## Inference the model<br>
-python R_NeRF.py --mode test --config configs/ble-rssi.yml --dataset_type ble --gpu 0<br>
+python R_NeRF.py --mode test --config configs/configs.yml --dataset_type ble --gpu 0<br>
