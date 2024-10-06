@@ -60,7 +60,6 @@ class BLE_dataset(Dataset):
         tx_pos_dir = os.path.join(datadir, 'tx_pos.csv')
         ris_pos_dir = os.path.join(datadir, 'ris_pos.csv')
 
-        #修改--------------------------------------------------------------------------------
         self.gateway_pos_dir_ris = os.path.join(datadir, 'gateway_positionris.yml')
         self.gateway_pos_dir_rx = os.path.join(datadir, 'gateway_positionrx.yml')
         self.gateway_pos_dir_tx = os.path.join(datadir, 'gateway_positiontx.yml')
@@ -80,13 +79,9 @@ class BLE_dataset(Dataset):
             gateway_pos_dict2 = yaml.safe_load(f)
             self.gateway_pos2 = torch.tensor([pos for pos in gateway_pos_dict2.values()], dtype=torch.float32)
             self.gateway_pos2 = self.gateway_pos2 / scale_worldsize
-            # print("------------------------------------------网关信息如下")
-            # print(self.gateway_pos2)
-            # print("------------------------------------------网关信息如下")
+
             self.n_gateways_rx = len(self.gateway_pos2)
-            # print(self.n_gateways_rx)
-            # print(scale_worldsize)
-            # print("------------------------------------------网关信息如下")
+
 
         with open(os.path.join(self.gateway_pos_dir_tx)) as f:
             gateway_pos_dict3 = yaml.safe_load(f)
