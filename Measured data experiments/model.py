@@ -88,7 +88,7 @@ def get_embedder(multires, is_embeded=True, input_dims=3):
 
 
 
-class NeRF2(nn.Module):
+class RNeRF(nn.Module):
 
     def __init__(self, D=8, W=256, skips=[4],
                  input_dims={'pts':3, 'view':3, 'tx':3},
