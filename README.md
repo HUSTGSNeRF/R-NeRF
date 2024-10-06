@@ -5,6 +5,7 @@ Thank you for your interest in our work. This repository mainly maintains the co
 This file contains the measured data set, which is mainly used for experiments<br>
 **Simulation data experiment** <br>
 This file contains the simulation data set, and the simulation data is mainly experimented<br>
+The relevant package and configuration information can be found in **conda_env.yml**.
 ## training the model<br>
 python R_NeRF.py --mode train --config configs/config.yml --dataset_type ble --gpu 0 <br>
 ## Inference the model<br>
