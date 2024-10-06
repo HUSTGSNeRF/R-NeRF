@@ -110,14 +110,7 @@ class BLE_dataset(Dataset):
 
 
     def load_data(self):
-        """load data from datadir to memory for training
 
-        Returns
-        -------
-        nn_inputs : tensor. [n_samples, 978]. The inputs for training
-                    tx_pos:3, ray_o:3, ray_d:9x36x3,
-        nn_labels : tensor. [n_samples, 1]. The RSSI labels for training
-        """
         ## NOTE! Large dataset may cause OOM?
         nn_inputs = torch.tensor(np.zeros((len(self), 3+3+3*self.alpha_res*self.beta_res+3+3+3*self.alpha_res*self.beta_res)), dtype=torch.float32)
         #nn_inputs = torch.tensor(np.zeros((len(self), 3+3+3*self.alpha_res*self.beta_res)), dtype=torch.float32)
