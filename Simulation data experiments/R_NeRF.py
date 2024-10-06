@@ -48,9 +48,6 @@ class NeRF2_Runner():
         self.logger = logger_config(log_savepath=log_savepath, logging_name='nerf2')
         self.logger.info("expname:%s, datadir:%s, logdir:%s", self.expname, self.datadir, self.logdir)
         self.writer = SummaryWriter(os.path.join(self.logdir, self.expname, 'tensorboard'))
-        print("555555555555555555555555555555555555555555",self.writer)
-
-
 
         ## Networks
         self.nerf2_network = NeRF2(**kwargs_network).to(self.devices)
@@ -113,8 +110,6 @@ class NeRF2_Runner():
             self.cosine_scheduler.load_state_dict(ckpt['scheduler_state_dict'])
             self.current_iteration = ckpt['current_iteration']
 
-
-
     def save_checkpoint(self):
         ckptsdir = os.path.join(self.logdir, self.expname, 'ckpts')
         model_lst = [x for x in sorted(os.listdir(ckptsdir)) if x.endswith('.tar')]
@@ -130,8 +125,6 @@ class NeRF2_Runner():
         }, ckptname)
         return ckptname
 
-
-
     def train(self):
         """train the model
         """
@@ -143,26 +136,13 @@ class NeRF2_Runner():
                         break
 
                     train_input, train_label = train_input.to(self.devices), train_label.to(self.devices)
-                    if self.dataset_type == "rfid":
-                        rays_o, rays_d, tx_o = train_input[:, :3], train_input[:, 3:6], train_input[:, 6:9]
-                        predict_spectrum = self.renderer.render_ss(tx_o, rays_o, rays_d)
-                        loss = sig2mse(predict_spectrum, train_label.view(-1))
-                    elif self.dataset_type == 'ble':
+                    if self.dataset_type == "ble":
                         tx_o, rays_o, rays_d, ris_o, rays_o1, rays_d1= train_input[:, :3], train_input[:, 3:6], train_input[:, 6:978],  train_input[:, 978:981], train_input[:, 981:984], train_input[:, 984:1956]
                         
                         predict_rssi = self.renderer.render_rssi(tx_o, rays_o, rays_d, ris_o, rays_o1, rays_d1)
                     
-                        #tx_o, rays_o, rays_d = train_input[:, :3], train_input[:, 3:6], train_input[:, 6:978]
-                        
-                        #predict_rssi = self.renderer.render_rssi(tx_o, rays_o, rays_d)
                         loss = sig2mse(predict_rssi, train_label.view(-1))
-                    elif self.dataset_type == 'mimo':
-                        uplink, rays_o, rays_d = train_input[:, :52], train_input[:, 52:55], train_input[:, 55:]
-                        predict_downlink = self.renderer.render_csi(uplink, rays_o, rays_d)
-                        predict_downlink = torch.concat((predict_downlink.real, predict_downlink.imag), dim=-1)
-                        loss = sig2mse(predict_downlink, train_label)
-
-
+                    
                     self.optimizer.zero_grad()
                     loss.backward()
                     self.optimizer.step()
