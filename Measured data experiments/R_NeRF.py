@@ -22,7 +22,7 @@ from utils.data_painter import paint_spectrum_compare
 from utils.logger import logger_config
 
 
-class NeRF2_Runner():
+class RNeRF_Runner():
 
     def __init__(self, mode, dataset_type, **kwargs) -> None:
 
@@ -217,7 +217,7 @@ if __name__ == '__main__':
         os.makedirs(logdir, exist_ok=True)
         copyfile(args.config, os.path.join(logdir,'config.yml'))
 
-    worker = NeRF2_Runner(mode=args.mode, dataset_type=args.dataset_type, **kwargs)
+    worker = RNeRF_Runner(mode=args.mode, dataset_type=args.dataset_type, **kwargs)
     if args.mode == 'train':
         worker.train()
     elif args.mode == 'test':
