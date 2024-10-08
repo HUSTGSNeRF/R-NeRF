@@ -41,13 +41,13 @@ class RNeRF_Runner():
         ## Logger
         log_filename = "logger.log"
         log_savepath = os.path.join(self.logdir, self.expname, log_filename)
-        self.logger = logger_config(log_savepath=log_savepath, logging_name='nerf2')
+        self.logger = logger_config(log_savepath=log_savepath, logging_name='R_nerf')
         self.logger.info("expname:%s, datadir:%s, logdir:%s", self.expname, self.datadir, self.logdir)
         self.writer = SummaryWriter(os.path.join(self.logdir, self.expname, 'tensorboard'))
 
         ## Networks
-        self.nerf2_network = RNeRF(**kwargs_network).to(self.devices)
-        params = list(self.nerf2_network.parameters())
+        self.nerf_network = RNeRF(**kwargs_network).to(self.devices)
+        params = list(self.nerf_network.parameters())
         self.optimizer = torch.optim.Adam(params, lr=float(kwargs_train['lr']),
                                           weight_decay=float(kwargs_train['weight_decay']),
                                           betas=(0.9, 0.999))
@@ -57,7 +57,7 @@ class RNeRF_Runner():
 
         ## Renderer
         renderer = renderer_dict[kwargs_render['mode']]
-        self.renderer = renderer(networks_fn=self.nerf2_network, **kwargs_render)
+        self.renderer = renderer(networks_fn=self.nerf_network, **kwargs_render)
         self.scale_worldsize = kwargs_render['scale_worldsize']
 
         ## Print total number of parameters
@@ -100,7 +100,7 @@ class RNeRF_Runner():
             self.logger.info('Loading ckpt %s', ckpt_path)
             ckpt = torch.load(ckpt_path, map_location=self.devices)
 
-            self.nerf2_network.load_state_dict(ckpt['nerf2_network_state_dict'])
+            self.nerf_network.load_state_dict(ckpt['nerf_network_state_dict'])
             self.optimizer.load_state_dict(ckpt['optimizer_state_dict'])
             self.cosine_scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer=self.optimizer,T_max=20,eta_min=1e-5)
             self.cosine_scheduler.load_state_dict(ckpt['scheduler_state_dict'])
@@ -115,7 +115,7 @@ class RNeRF_Runner():
         ckptname = os.path.join(ckptsdir, '{:06d}.tar'.format(self.current_iteration))
         torch.save({
             'current_iteration': self.current_iteration,
-            'nerf2_network_state_dict': self.nerf2_network.state_dict(),
+            'nerf_network_state_dict': self.nerf_network.state_dict(),
             'optimizer_state_dict': self.optimizer.state_dict(),
             'scheduler_state_dict': self.cosine_scheduler.state_dict()
         }, ckptname)
@@ -161,7 +161,7 @@ class RNeRF_Runner():
         """test the model and save predicted RSSI values to a file
         """
         self.logger.info("Start evaluation")
-        self.nerf2_network.eval()
+        self.nerf_network.eval()
 
         with torch.no_grad():
             with open(os.path.join(self.logdir, self.expname, "result.txt"), 'w') as f:
