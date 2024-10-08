@@ -47,8 +47,8 @@ class RNeRF_Runner():
 
 
         ## Networks
-        self.nerf2_network = RNeRF(**kwargs_network).to(self.devices)
-        params = list(self.nerf2_network.parameters())
+        self.nerf_network = RNeRF(**kwargs_network).to(self.devices)
+        params = list(self.nerf_network.parameters())
         self.optimizer = torch.optim.Adam(params, lr=float(kwargs_train['lr']),
                                           weight_decay=float(kwargs_train['weight_decay']),
                                           betas=(0.9, 0.999))
@@ -58,7 +58,7 @@ class RNeRF_Runner():
 
         ## Renderer
         renderer = renderer_dict[kwargs_render['mode']]
-        self.renderer = renderer(networks_fn=self.nerf2_network, **kwargs_render)
+        self.renderer = renderer(networks_fn=self.nerf_network, **kwargs_render)
         self.scale_worldsize = kwargs_render['scale_worldsize']
 
         ## Print total number of parameters
