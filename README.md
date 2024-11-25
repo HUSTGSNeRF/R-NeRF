@@ -50,6 +50,10 @@ This file contains the simulation data set, and the simulation data is mainly ae
 ## Configuration Information <br>
 The relevant package and configuration information can be found in **conda_env.yml**.
 ## training the model<br>
-python R_NeRF.py --mode train --config configs/config.yml --dataset_type ble --gpu 0 <br>
+```python
+python R_NeRF.py --mode train --config configs/config.yml --dataset_type ble --gpu 0
+```
 ## Inference the model<br>
+```python
 python R_NeRF.py --mode test --config configs/config.yml --dataset_type ble --gpu 0<br>
+```
