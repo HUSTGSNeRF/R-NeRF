@@ -55,5 +55,5 @@ python R_NeRF.py --mode train --config configs/config.yml --dataset_type ble --g
 ```
 ## Inference the model<br>
 ```python
-python R_NeRF.py --mode test --config configs/config.yml --dataset_type ble --gpu 0<br>
+python R_NeRF.py --mode test --config configs/config.yml --dataset_type ble --gpu 0
 ```
