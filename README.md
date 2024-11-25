@@ -20,7 +20,7 @@ If you find the code useful, please refer to our work using:<br>
 ```python
 ---Measured data experiments:    # This file contains the measured data set, which is mainly used for experiments
   ---R_NeRF.py                   # run R_NeRF.py to get the result
-  ---model.py                    # contains R_NeRF model****
+  ---model.py                    # contains R_NeRF model
   ---dataloader.py.              # Contains various processing methods for data
   ---renderer.py                 # Contains R-Nerf's rendering method for data
   ---conda_env.yml               # Contains relevant configuration information for this code
