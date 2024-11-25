@@ -16,10 +16,36 @@ If you find the code useful, please refer to our work using:<br>
 }
 ```
 ## Presentation of the document<br>
+**Project Structure** <br>
+```python
+---Measured data experiments:    #  This file contains the measured data set, which is mainly used for experiments
+  ---R_NeRF.py                   # run R_NeRF.py to get the result
+  ---model.py                    # contains R_NeRF model****
+  ---dataloader.py.              # Contains various processing methods for data
+  ---renderer.py                 # Contains R-Nerf's rendering method for data
+  ---conda_env.yml               # Contains relevant configuration information for this code
+  ---configs:    
+    ---config.yml                # Contains parameter settings related to code runtime
+  ---data/BLE:    
+    ---gateway_positionris.yml   # Contains RIS coordinate information
+    ---gateway_positionrx.yml    # Contains receiver information
+    ---gateway_positiontx.yml    # Contains transmitterinformation
+    ---ris_pos.csv               # Contains RIS coordinate information
+    ---rx_pos.csv                # Contains receiver information
+    ---tx_pos.csv                # Contains transmitterinformation
+    ---train_index.txt           # Contains training dataset index information
+    ---test_index.txt            # Contains testing dataset index information
+  ---data_index:                 # Contains data index information at different sampling rates
+  ---logs/BLE/###：              # Contains corresponding experimental result information
+  ---utils：                     # Used to record and manage log information of programs
+    ---logger.py
+
+---Simulation data experiments:  # The file content is similar to the appeal content
+```
 **Measured data experiments** <br>
 This file contains the measured data set, which is mainly used for experiments<br>
 **Simulation data experiment** <br>
-This file contains the simulation data set, and the simulation data is mainly experimented<br>
+This file contains the simulation data set, and the simulation data is mainly aexperimented<br>
 ## Configuration Information <br>
 The relevant package and configuration information can be found in **conda_env.yml**.
 ## training the model<br>
