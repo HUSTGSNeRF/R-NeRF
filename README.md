@@ -11,7 +11,8 @@ If you find the code useful, please refer to our work using:<br>
       archivePrefix={arXiv},
       primaryClass={cs.IT},
       url={https://arxiv.org/abs/2405.11541}, 
-}<br>
+}
+```
 ## Presentation of the document<br>
 **Measured data experiments** <br>
 This file contains the measured data set, which is mainly used for experiments<br>
