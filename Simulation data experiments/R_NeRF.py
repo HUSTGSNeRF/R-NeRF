@@ -18,7 +18,6 @@ import scipy.io as scio
 from dataloader import *
 from model import *
 from renderer import renderer_dict
-from utils.data_painter import paint_spectrum_compare
 from utils.logger import logger_config
 
 
